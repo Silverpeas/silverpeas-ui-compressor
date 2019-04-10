@@ -31,7 +31,7 @@
   <packaging>jar</packaging>
   <groupId>org.silverpeas</groupId>
   <artifactId>silverpeas-ui-compressor</artifactId>
-  <version>2.5-SNAPSHOT</version>
+  <version>2.5</version>
   <name>UI Compressor for Silverpeas's projects</name>
   <description>
     This compressor is a JavaScript compressor which, in addition to removing comments and white-spaces, obfuscates local variables using the smallest possible variable name. This obfuscation is safe, even when using constructs such as 'eval' or 'with' (although the compression is not optimal in those cases).
