@@ -735,7 +735,7 @@ public class JavaScriptCompressor {
                 if (idx <= 0 || idx >= hint.length() - 1) {
                     if (mode == BUILDING_SYMBOL_TREE && (! preserveUnknownHints)) {
                         // No need to report the error twice, hence the test...
-                        warn("Not a YUICompressor hint: " + hint, true);
+                        warn("Not a Silverpeas's UI Compressor hint: " + hint, true);
                     }
                     break;
                 }

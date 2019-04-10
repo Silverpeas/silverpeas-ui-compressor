@@ -1,19 +1,19 @@
-YUI Compressor - The Yahoo! JavaScript and CSS Compressor
+Silverpeas's UI Compressor - The Silverpeas JavaScript and CSS Compressor
 =========================================================
 
-The YUI Compressor is a JavaScript compressor which, in addition to removing
+The Silverpeas's UI Compressor is a fork of YUI Compressor which is a JavaScript compressor which, in addition to removing
 comments and white-spaces, obfuscates local variables using the smallest
 possible variable name. This obfuscation is safe, even when using constructs
 such as 'eval' or 'with' (although the compression is not optimal in those
-cases) Compared to jsmin, the average savings is around 20%.
+cases).
 
-The YUI Compressor is also able to safely compress CSS files. The decision
+It is also able to safely compress CSS files. The decision
 on which compressor is being used is made on the file extension (js or css)
 
 Building
 --------
 
-    ant
+    mvn clean install
 
 Testing
 -------
@@ -21,58 +21,11 @@ Testing
     ./tests/suite.sh
 
 
-Node.js Package
----------------
-
-You can require compressor in a Node.js package and compress files and strings in async.
-_It still uses Java under the hood_
-
-    npm i yuicompressor
-
-```javascript
-
-var compressor = require('yuicompressor');
-
-compressor.compress('/path/to/file or String of JS', {
-    //Compressor Options:
-    charset: 'utf8',
-    type: 'js',
-    nomunge: true,
-    'line-break': 80
-}, function(err, data, extra) {
-    //err   If compressor encounters an error, it's stderr will be here
-    //data  The compressed string, you write it out where you want it
-    //extra The stderr (warnings are printed here in case you want to echo them
-});
-
-```
-
-Options:
-* `charset` // defaults to 'utf8'
-* `type` // defaults to 'js'
-* `line-break`
-* `nomunge`
-* `preserve-semi`
-* `disable-optimizations`
-
-
-TODO
-----
-
-* Better Docs
-* Help Pages
-
-Build Status
-------------
-
-[![Build Status](https://secure.travis-ci.org/yui/yuicompressor.svg?branch=master)](http://travis-ci.org/yui/yuicompressor)
-
-
 Global Options
 --------------
 
     -h, --help
-        Prints help on how to use the YUI Compressor
+        Prints help on how to use the Silverpeas's UI Compressor
 
     --line-break
         Some source control tools don't like files containing lines longer than,
@@ -89,18 +42,18 @@ Global Options
         required if the input file extension is neither 'js' nor 'css'.
 
     --charset character-set
-        If a supported character set is specified, the YUI Compressor will use it
+        If a supported character set is specified, the Silverpeas's UI Compressor will use it
         to read the input file. Otherwise, it will assume that the platform's
         default character set is being used. The output file is encoded using
         the same character set.
 
     -o outfile
 
-        Place output in file outfile. If not specified, the YUI Compressor will
+        Place output in file outfile. If not specified, the Silverpeas's UI Compressor will
         default to the standard output, which you can redirect to a file.
         Supports a filter syntax for expressing the output pattern when there are
         multiple input files.  ex:
-            java -jar yuicompressor.jar -o '.css$:-min.css' *.css
+            java -jar silverpeas-ui-compressor.jar -o '.css$:-min.css' *.css
         ... will minify all .css files and save them as -min.css
 
     -v, --verbose
@@ -114,8 +67,7 @@ JavaScript Only Options
 
     --preserve-semi
         Preserve unnecessary semicolons (such as right before a '}') This option
-        is useful when compressed code has to be run through JSLint (which is the
-        case of YUI for example)
+        is useful when compressed code has to be run through JSLint
 
     --disable-optimizations
         Disable all the built-in micro optimizations.
@@ -127,7 +79,7 @@ Notes
 
 * Supports wildcards for specifying multiple input files.
 
-* The YUI Compressor requires Java version >= 1.5.
+* The Silverpeas's UI Compressor requires Java version >= 1.8.
 
 * It is possible to prevent a local variable, nested function or function
 argument from being obfuscated by using "hints". A hint is a string that
@@ -152,7 +104,7 @@ The hint itself disappears from the compressed file.
 
 * C-style comments starting with `/*!` are preserved. This is useful with
     comments containing copyright/license information. As of 2.4.8, the '!'
-    is no longer dropped by YUICompressor. For example:
+    is no longer dropped by Silverpeas's UI Compressor. For example:
 
 ```
 /*!
@@ -162,12 +114,12 @@ The hint itself disappears from the compressed file.
  */
 ```
 
-remains in the output, untouched by YUICompressor.
+remains in the output, untouched by Silverpeas's UI Compressor.
 
 Modified Rhino Files
 --------------------
 
-YUI Compressor uses a modified version of the Rhino library
+Silverpeas's UI  Compressor uses a modified version of the Rhino library
 (http://www.mozilla.org/rhino/) The changes were made to support
 JScript conditional comments, preserved comments, unescaped slash
 characters in regular expressions, and to allow for the optimization

@@ -279,9 +279,9 @@ public class YUICompressor {
     }
     private static void usage() {
         System.err.println(
-                "YUICompressor Version: @VERSION@\n"
+                "Silverpeas's UI Compressor Version: @VERSION@\n"
 
-                        + "\nUsage: java -jar yuicompressor-@VERSION@.jar [options] [input file]\n"
+                        + "\nUsage: java -jar silverpeas-ui-compressor-@VERSION@.jar [options] [input file]\n"
                         + "\n"
                         + "Global Options\n"
                         + "  -V, --version             Print version information\n"
@@ -294,8 +294,8 @@ public class YUICompressor {
                         + "  -m <file>                 Place a mapping of munged identifiers to originals in this file\n\n"
                         + "  -o <file>                 Place the output into <file>. Defaults to stdout.\n"
                         + "                            Multiple files can be processed using the following syntax:\n"
-                        + "                            java -jar yuicompressor.jar -o '.css$:-min.css' *.css\n"
-                        + "                            java -jar yuicompressor.jar -o '.js$:-min.js' *.js\n\n"
+                        + "                            java -jar silverpeas-ui-compressor.jar -o '.css$:-min.css' *.css\n"
+                        + "                            java -jar silverpeas-ui-compressor.jar -o '.js$:-min.js' *.js\n\n"
 
                         + "JavaScript Options\n"
                         + "  --nomunge                 Minify only, do not obfuscate\n"

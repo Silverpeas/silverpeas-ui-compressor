@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="YUI Compressor" default="build.jar" basedir=".">
 
-    <target name="clean" depends="-load.properties">
+    <target name="clean">
         <delete dir="${build.dir}" quiet="true"/>
     </target>
 
-    <target name="-load.properties">
-        <property file="ant.properties"/>
-    </target>
-
-    <target name="-init" depends="-load.properties">
+    <target name="-init">
         <delete dir="${build.dir}"/>
         <mkdir dir="${build.dir}"/>
     </target>
@@ -33,8 +29,8 @@
                deprecation="off"
                debug="on"
                includeantruntime="false"
-	           target="1.5"
-               source="1.5">
+               target="1.8"
+               source="1.8">
             <classpath>
                 <pathelement location="${lib.dir}/jargs-1.0.jar"/>
                 <pathelement location="${lib.dir}/rhino-1.7R2.jar"/>
