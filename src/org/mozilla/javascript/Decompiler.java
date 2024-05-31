@@ -498,6 +498,11 @@ public class Decompiler
                 }
                 break;
             }
+
+            case Token.CONDITIONAL_DOT:
+                result.append("?.");
+                break;
+
             case Token.DOT:
                 result.append('.');
                 break;

@@ -99,6 +99,7 @@ public class JavaScriptCompressor {
         literals.put(new Integer(Token.LB), "[");
         literals.put(new Integer(Token.RB), "]");
         literals.put(new Integer(Token.DOT), ".");
+        literals.put(new Integer(Token.CONDITIONAL_DOT), "?.");
         literals.put(new Integer(Token.NEW), "new ");
         literals.put(new Integer(Token.DELPROP), "delete ");
         literals.put(new Integer(Token.IF), "if");
@@ -375,6 +376,7 @@ public class JavaScriptCompressor {
                         if (i < length - 2) {
                             JavaScriptToken nextNextToken = (JavaScriptToken) tokens.get(i + 2);
                             if (nextNextToken.getType() == Token.DOT ||
+                                nextNextToken.getType() == Token.CONDITIONAL_DOT ||
                                 nextNextToken.getType() == Token.LB) {
                                 i += 3;
                                 continue;
@@ -877,6 +879,7 @@ public class JavaScriptCompressor {
 
                         if ((offset < 2 ||
                                 (getToken(-2).getType() != Token.DOT &&
+                                    getToken(-2).getType() != Token.CONDITIONAL_DOT &&
                                         getToken(-2).getType() != Token.GET &&
                                         getToken(-2).getType() != Token.SET)) &&
                                 getToken(0).getType() != Token.OBJECTLIT) {
@@ -1028,7 +1031,8 @@ public class JavaScriptCompressor {
 
                     } else if (mode == CHECKING_SYMBOL_TREE) {
 
-                        if ((offset < 2 || getToken(-2).getType() != Token.DOT) &&
+                        if ((offset < 2 || (getToken(-2).getType() != Token.DOT &&
+                            getToken(-2).getType() != Token.CONDITIONAL_DOT)) &&
                                 getToken(0).getType() != Token.OBJECTLIT) {
 
                             identifier = getIdentifier(symbol, scope);
@@ -1132,7 +1136,8 @@ public class JavaScriptCompressor {
 
                 case Token.NAME:
 
-                    if (offset >= 2 && getToken(-2).getType() == Token.DOT ||
+                    if (offset >= 2 && (getToken(-2).getType() == Token.DOT ||
+                        getToken(-2).getType() == Token.CONDITIONAL_DOT) ||
                             getToken(0).getType() == Token.OBJECTLIT) {
 
                         result.append(symbol);

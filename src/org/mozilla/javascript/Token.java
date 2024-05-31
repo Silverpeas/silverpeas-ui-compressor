@@ -247,7 +247,9 @@ public class Token
         CONDCOMMENT    = 160,  // JScript conditional comment
         KEEPCOMMENT    = 161,  // /*! ... */ comment
 
-        LAST_TOKEN     = 162;
+        CONDITIONAL_DOT = 162, // / member operator if defined object (?.)
+
+        LAST_TOKEN     = 163;
 
     public static String name(int token)
     {
@@ -363,6 +365,7 @@ public class Token
           case INC:             return "INC";
           case DEC:             return "DEC";
           case DOT:             return "DOT";
+          case CONDITIONAL_DOT: return "CONDITIONAL_DOT";
           case FUNCTION:        return "FUNCTION";
           case EXPORT:          return "EXPORT";
           case IMPORT:          return "IMPORT";

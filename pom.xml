@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2000 - 2019 Silverpeas
+    Copyright (C) 2000 - 2024 Silverpeas
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -31,7 +31,7 @@
   <packaging>jar</packaging>
   <groupId>org.silverpeas</groupId>
   <artifactId>silverpeas-ui-compressor</artifactId>
-  <version>2.5</version>
+  <version>2.6-SNAPSHOT</version>
   <name>UI Compressor for Silverpeas's projects</name>
   <description>
     This compressor is a JavaScript compressor which, in addition to removing comments and white-spaces, obfuscates local variables using the smallest possible variable name. This obfuscation is safe, even when using constructs such as 'eval' or 'with' (although the compression is not optimal in those cases).
@@ -50,7 +50,7 @@
       <id>Silverpeas</id>
       <layout>default</layout>
       <name>Silverpeas Repository</name>
-      <url>http://www.silverpeas.org/nexus/content/groups/silverpeas</url>
+      <url>https://nexus3.silverpeas.org/repository/silverpeas</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -65,13 +65,13 @@
       <id>silverpeas</id>
       <name>Repository Silverpeas</name>
       <layout>default</layout>
-      <url>http://www.silverpeas.org/nexus/content/repositories/releases/</url>
+      <url>https://nexus3.silverpeas.org/repository/releases/</url>
     </repository>
     <snapshotRepository>
       <id>silverpeas-snapshots</id>
       <name>Snapshots Repository Silverpeas</name>
       <layout>default</layout>
-      <url>http://www.silverpeas.org/nexus/content/repositories/snapshots/</url>
+      <url>https://nexus3.silverpeas.org/repository/snapshots/</url>
     </snapshotRepository>
     <site>
       <id>silverpeas_repository</id>
@@ -81,7 +81,7 @@
 
   <properties>
     <!-- property used by the CI to both deploy a build version and release the next stable version -->
-    <next.release>2.5</next.release>
+    <next.release>2.6</next.release>
   </properties>
 
   <build>
@@ -112,8 +112,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
           <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
+            <source>11</source>
+            <target>11</target>
             <encoding>UTF-8</encoding>
             <showDeprecation>true</showDeprecation>
           </configuration>
@@ -188,7 +188,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
-          <version>1.8</version>
+          <version>3.1.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -210,15 +210,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
-        <dependencies>
-          <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>tools</artifactId>
-            <version>1.5.0</version>
-            <scope>system</scope>
-            <systemPath>${java.home}/../lib/tools.jar</systemPath>
-          </dependency>
-        </dependencies>
         <executions>
           <execution>
             <phase>package</phase>

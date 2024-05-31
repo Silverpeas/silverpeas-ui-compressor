@@ -1948,6 +1948,7 @@ public class Parser
             switch (tt) {
 
               case Token.DOT:
+              case Token.CONDITIONAL_DOT:
               case Token.DOTDOT:
                 {
                     int memberTypeFlags;

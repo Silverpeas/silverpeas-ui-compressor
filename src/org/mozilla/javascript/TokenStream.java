@@ -576,7 +576,11 @@ class TokenStream
             case '(': return Token.LP;
             case ')': return Token.RP;
             case ',': return Token.COMMA;
-            case '?': return Token.HOOK;
+            case '?':
+                if (matchChar('.')) {
+                    return Token.CONDITIONAL_DOT;
+                }
+                return Token.HOOK;
             case ':':
                 if (matchChar(':')) {
                     return Token.COLONCOLON;
